@@ -1,18 +1,16 @@
 package dbscan;
 
-import java.util.ArrayList;
-
 public class CustomPair {
 	
-	ArrayList<Character> charList;
+	Character[] charList;
 	int total;
 	
-	public CustomPair(ArrayList<Character> charlist, int value) {
+	public CustomPair(Character[] charlist, int value) {
 		charList = charlist;
 		total = value;
 	}
 	
-	public ArrayList<Character> getCharList() {
+	public Character[] getCharList() {
 		return charList;
 	}
 	

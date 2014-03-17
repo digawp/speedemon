@@ -17,19 +17,22 @@ public class SpeedDemon {
 	public int run() throws IOException {
 		while (reader.ready()) {
 			String line = reader.readLine();
+			
 			int noobHash = asciiCalc(line);
-			ArrayList<Character> chars = new ArrayList<Character>(line.length());
-			for (int i = 0; i < line.length(); i++) {
-				chars.add(line.charAt(i));
+			
+			Character[] chars = new Character[line.length()];
+			
+			for (int i = 0; i < chars.length; i++) {
+				chars[i] = line.charAt(i);
 			}
-			Collections.sort(chars);
+			
+			MergeSort.run(chars, 0, chars.length - 1);
 			
 			if (treeSet.add(noobHash)) { // returns true if it is not in the tree
 				hashMap.put(noobHash, new CustomPair(chars, 1));
 			} else if (hashMap.get(noobHash).getCharList().equals(chars)) {
+				hashMap.get(noobHash).incrementTotal();
 				
-				int newVal = hashMap.get(noobHash).getTotal() + 1;
-				hashMap.put(noobHash, new CustomPair(chars, newVal));
 			} else {
 				int slot = findEmptySlot(noobHash);
 				hashMap.put(slot, new CustomPair(chars,1));
