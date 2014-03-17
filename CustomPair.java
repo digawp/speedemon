@@ -20,4 +20,8 @@ public class CustomPair {
 		return total;
 	}
 	
+	public void incrementTotal() {
+		total++;
+	}
+	
 }
