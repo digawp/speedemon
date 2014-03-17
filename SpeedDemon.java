@@ -26,20 +26,33 @@ public class SpeedDemon {
 			
 			if (treeSet.add(noobHash)) { // returns true if it is not in the tree
 				hashMap.put(noobHash, new CustomPair(chars, 1));
-			} else {
+			} else if (hashMap.get(noobHash).getCharList().equals(chars)) {
 				
-				int newVal = hashMap.get(noobHash).getTail().;
-				hashMap.put(noobHash, new newVal);
+				int newVal = hashMap.get(noobHash).getTotal() + 1;
+				hashMap.put(noobHash, new CustomPair(chars, newVal));
+			} else {
+				int slot = findEmptySlot(noobHash);
+				hashMap.put(slot, new CustomPair(chars,1));
+				treeSet.add(slot);
 			}
 			
 		}
 		reader.close();
 		int ans = 0;
 		for (Integer integer : treeSet) {
-			int val = hashMap.get(integer);
+			int val = hashMap.get(integer).getTotal();
 			ans += countPair(val);
 		}
 		return ans;
+	}
+	
+	private int findEmptySlot(int start) {
+		// TODO Auto-generated method stub
+		int test = start;
+		while (hashMap.containsKey(test)) {
+			test++;
+		}
+		return test;
 	}
 	
 	static int countPair(int n) {
