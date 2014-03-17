@@ -26,11 +26,11 @@ public class SpeedDemon {
 				chars[i] = line.charAt(i);
 			}
 			
-			MergeSort.run(chars, 0, chars.length - 1);
+			MergeSort.mergeSort(chars);
 			
 			if (treeSet.add(noobHash)) { // returns true if it is not in the tree
 				hashMap.put(noobHash, new CustomPair(chars, 1));
-			} else if (hashMap.get(noobHash).getCharList().equals(chars)) {
+			} else if (Arrays.deepEquals(hashMap.get(noobHash).getCharList(), chars)) {
 				hashMap.get(noobHash).incrementTotal();
 				
 			} else {

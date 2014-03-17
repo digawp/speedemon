@@ -1,29 +1,58 @@
 package dbscan;
 
+import java.util.Arrays;
+
 public class MergeSort {
 
-	public static <T extends Comparable<T>> void run(T[] array, int lo, int hi) {
-		if (hi - lo <= 1) {
-			return;
+	static <T extends Comparable<T>> void mergeSort(T[] A) {
+		if (A.length > 1) {
+			int q = A.length / 2;
+
+			T[] leftArray = Arrays.copyOfRange(A, 0, q);
+			T[] rightArray = Arrays.copyOfRange(A, q, A.length);
+
+			mergeSort(leftArray);
+			mergeSort(rightArray);
+
+			merge(A, leftArray, rightArray);
 		}
-		run(array, lo, (hi-lo)/2);
-		run(array, lo + (hi-lo/2) + 1, hi);
-		merge(array, lo, lo + (hi-lo/2));
 	}
-	
-	private static <T extends Comparable<T>> void merge(T[] array, int first, int second) {
-		T[] copy = array.clone();
-		int arrPointer = first;
-		while (first < second && second < array.length && arrPointer < array.length) {
-			if (copy[first].compareTo(copy[second]) > 0) {
-				array[arrPointer] = copy[second];
-				second++;
+
+	static <T extends Comparable<T>>void merge(T[] a, T[] l, T[] r) {
+		int totElem = l.length + r.length;
+		// int[] a = new int[totElem];
+		int i, li, ri;
+		i = li = ri = 0;
+		while (i < totElem) {
+			if ((li < l.length) && (ri < r.length)) {
+				if (l[li].compareTo(r[ri]) < 0) {
+					a[i] = l[li];
+					i++;
+					li++;
+				} else {
+					a[i] = r[ri];
+					i++;
+					ri++;
+				}
 			} else {
-				array[arrPointer] = copy[first];
-				first++;
+				if (li >= l.length) {
+					while (ri < r.length) {
+						a[i] = r[ri];
+						i++;
+						ri++;
+					}
+				}
+				if (ri >= r.length) {
+					while (li < l.length) {
+						a[i] = l[li];
+						li++;
+						i++;
+					}
+				}
 			}
-			arrPointer++;
 		}
+		// return a;
+
 	}
-	
+
 }
