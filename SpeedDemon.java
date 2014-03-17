@@ -8,7 +8,7 @@ import java.util.*;
 public class SpeedDemon {
 
 	BufferedReader reader;
-	HashMap<Integer, Integer> hashMap = new HashMap<Integer, Integer>();
+	HashMap<Integer, CustomPair> hashMap = new HashMap<Integer, CustomPair>();
 	TreeSet<Integer> treeSet = new TreeSet<Integer>();
 	
 	public SpeedDemon(String path) throws IOException {
@@ -18,10 +18,18 @@ public class SpeedDemon {
 		while (reader.ready()) {
 			String line = reader.readLine();
 			int noobHash = asciiCalc(line);
+			ArrayList<Character> chars = new ArrayList<Character>(line.length());
+			for (int i = 0; i < line.length(); i++) {
+				chars.add(line.charAt(i));
+			}
+			Collections.sort(chars);
+			
 			if (treeSet.add(noobHash)) { // returns true if it is not in the tree
-				hashMap.put(noobHash, 1);
+				hashMap.put(noobHash, new CustomPair(chars, 1));
 			} else {
-				hashMap.put(noobHash, hashMap.get(noobHash)+ 1);
+				
+				int newVal = hashMap.get(noobHash).getTail().;
+				hashMap.put(noobHash, new newVal);
 			}
 			
 		}
