@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class MergeSort {
 
 	static <T extends Comparable<T>> void mergeSort(T[] A, int lo, int hi) {
-		if (hi-lo > 1) {
+		if (hi-lo > 0) {
 			int q = lo + (hi-lo)/2;
 
 			mergeSort(A, lo, q);
 			mergeSort(A, q+1, hi);
 
-			merge(A, lo, q+1, hi);
+			merge(A, lo, q+1, hi+1);
 		}
 	}
 
@@ -55,8 +55,8 @@ public class MergeSort {
 	}
 	
 	public static void main(String[] args) {
-		Integer[] test = new Integer[]{1, 5, 3, 4};
-		mergeSort(test, 0, test.length);
+		Integer[] test = new Integer[]{1, 15, 3, 4, 0, 9, 20, 2, 7, 4};
+		mergeSort(test, 0, test.length-1);
 		for (int i = 0; i < test.length; i++) {
 			System.out.println(test[i]);
 		}
