@@ -26,7 +26,7 @@ public class SpeedDemon {
 				chars[i] = line.charAt(i);
 			}
 			
-			MergeSort.mergeSort(chars);
+			MergeSort.mergeSort(chars, 0, chars.length - 1);
 			
 			if (treeSet.add(noobHash)) { // returns true if it is not in the tree
 				hashMap.put(noobHash, new CustomPair(chars, 1));
