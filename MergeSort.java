@@ -1,7 +1,5 @@
 package dbscan;
 
-import java.util.Arrays;
-
 public class MergeSort {
 
 	static <T extends Comparable<T>> void mergeSort(T[] A, int lo, int hi) {
