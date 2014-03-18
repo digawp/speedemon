@@ -2,15 +2,15 @@ package dbscan;
 
 public class CustomPair {
 	
-	int[] charList;
+	Integer[] charList;
 	int total;
 	
-	public CustomPair(int[] charlist, int value) {
+	public CustomPair(Integer[] charlist, int value) {
 		charList = charlist;
 		total = value;
 	}
 	
-	public int[] getCharList() {
+	public Integer[] getCharList() {
 		return charList;
 	}
 	
