@@ -83,7 +83,7 @@ public class SpeedDemon {
 			}
 			
 		}
-		return val % (max + max/2);
+		return val;
 	}
 	
 }
