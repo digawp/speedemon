@@ -63,15 +63,6 @@ public class SpeedDemon {
 		return answer;
 	}
 	
-	private int findEmptySlot(int start) {
-		// TODO Auto-generated method stub
-		int test = start;
-		while (hashMap.containsKey(test)) {
-			test++;
-		}
-		return test;
-	}
-	
 	static int countPair(int n) {
 		if (n % 2 == 0) {
 			return n/2 * (n-1);

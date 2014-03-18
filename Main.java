@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		SpeedDemon demon = new SpeedDemon("8.in");
+		SpeedDemon demon = new SpeedDemon("7.in");
 		StopWatch sw = new StopWatch();
 		sw.start();
 		int ans = demon.run();
