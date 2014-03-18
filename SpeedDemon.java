@@ -20,13 +20,11 @@ public class SpeedDemon {
 			
 			int noobHash = asciiCalc(line);
 			
-			Character[] chars = new Character[line.length()];
+			Integer[] chars = new Integer[128];
 			
 			for (int i = 0; i < chars.length; i++) {
-				chars[i] = line.charAt(i);
+				chars[line.charAt(i)]++;
 			}
-			
-			MergeSort.mergeSort(chars, 0, chars.length - 1);
 			
 			if (treeSet.add(noobHash)) { // returns true if it is not in the tree
 				hashMap.put(noobHash, new CustomPair(chars, 1));
