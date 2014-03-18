@@ -11,7 +11,7 @@ public class MergeSort {
 			mergeSort(A, lo, q);
 			mergeSort(A, q+1, hi);
 
-			merge(A, lo, q+1, hi+1);
+			merge(A, lo, q+1, hi);
 		}
 	}
 
