@@ -22,8 +22,14 @@ public class SpeedDemon {
 			
 			Integer[] chars = new Integer[128];
 			
-			for (int i = 0; i < chars.length; i++) {
-				chars[line.charAt(i)]++;
+			for (int i = 0; i < line.length(); i++) {
+				int k = line.charAt(i);
+				if (chars[k-1] == null) {
+					chars[k-1] = 1;
+				} else {
+					chars[k - 1]++;
+				}
+				
 			}
 			
 			if (treeSet.add(noobHash)) { // returns true if it is not in the tree
