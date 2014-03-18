@@ -9,13 +9,13 @@ public class SpeedDemon {
 
 	BufferedReader reader;
 	HashMap<Integer, CustomPair> hashMap = new HashMap<Integer, CustomPair>();
-	TreeSet<Integer> treeSet = new TreeSet<Integer>();
 	
 	public SpeedDemon(String path) throws IOException {
 		reader = new BufferedReader(new FileReader(path));
 	}
 	public int run() throws IOException {
 		int noOfLines = Integer.parseInt(reader.readLine());
+		int answer = 0;
 		
 		while (reader.ready()) {
 			String line = reader.readLine();
@@ -34,25 +34,33 @@ public class SpeedDemon {
 				
 			}
 			
-			if (treeSet.add(noobHash)) { // returns true if it is not in the tree
-				hashMap.put(noobHash, new CustomPair(chars, 1));
-			} else if (Arrays.deepEquals(hashMap.get(noobHash).getCharList(), chars)) {
-				hashMap.get(noobHash).incrementTotal();
+			if (hashMap.containsKey(noobHash)) {
+				if (Arrays.deepEquals(hashMap.get(noobHash).getCharList(), chars)) {
+					answer += hashMap.get(noobHash).getTotal();
+					hashMap.get(noobHash).incrementTotal();
+				} else {
+					while (hashMap.get(noobHash) != null) {
+						if (Arrays.deepEquals(hashMap.get(noobHash).getCharList(), chars)) {
+							answer += hashMap.get(noobHash).getTotal();
+							hashMap.get(noobHash).incrementTotal();
+							break;
+						}
+						noobHash++;
+					}
+					if (hashMap.get(noobHash) == null) {
+						hashMap.put(noobHash, new CustomPair(chars,1));
+					}
+				}
+				
 				
 			} else {
-				int slot = findEmptySlot(noobHash);
-				hashMap.put(slot, new CustomPair(chars,1));
-				treeSet.add(slot);
+				hashMap.put(noobHash, new CustomPair(chars, 1));
 			}
 			
 		}
 		reader.close();
-		int ans = 0;
-		for (Integer integer : treeSet) {
-			int val = hashMap.get(integer).getTotal();
-			ans += countPair(val);
-		}
-		return ans;
+		
+		return answer;
 	}
 	
 	private int findEmptySlot(int start) {
