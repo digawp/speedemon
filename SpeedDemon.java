@@ -15,10 +15,12 @@ public class SpeedDemon {
 		reader = new BufferedReader(new FileReader(path));
 	}
 	public int run() throws IOException {
+		int noOfLines = Integer.parseInt(reader.readLine());
+		
 		while (reader.ready()) {
 			String line = reader.readLine();
 			
-			int noobHash = asciiCalc(line);
+			int noobHash = asciiCalc(line, noOfLines);
 			
 			Integer[] chars = new Integer[128];
 			
@@ -70,7 +72,7 @@ public class SpeedDemon {
 		}
 	}
 	
-	static int asciiCalc(String s) {
+	static int asciiCalc(String s, int max) {
 		int len = s.length();
 		int val = 0;
 		for (int i = 0; i < len; i++) {
@@ -81,7 +83,7 @@ public class SpeedDemon {
 			}
 			
 		}
-		return val;
+		return val % (max + max/2);
 	}
 	
 }
