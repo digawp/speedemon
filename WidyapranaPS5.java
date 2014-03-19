@@ -195,12 +195,8 @@ public class WidyapranaPS5 {
 		args = new String[] { "4.in", "5.in", "6.in", "7.in", "8.in" };
 		for (int i = 0; i < args.length; i++) {
 			WidyapranaPS5 demon = new WidyapranaPS5(args[i]);
-			StopWatch sw = new StopWatch();
-			sw.start();
 			int ans = demon.run();
-			sw.stop();
 			System.out.println(ans);
-			System.out.println(sw.getTime());
 		}
 
 	}
