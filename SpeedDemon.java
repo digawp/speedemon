@@ -153,5 +153,20 @@ public class SpeedDemon {
 		}
 		return val;
 	}
+	
+	public static void main(String[] args) throws IOException {
+
+		args = new String[]{"4.in", "5.in", "6.in", "7.in", "8.in"};
+		for (int i = 0; i < args.length; i++) {
+			SpeedDemon demon = new SpeedDemon(args[i]);
+			StopWatch sw = new StopWatch();
+			sw.start();
+			int ans = demon.run();
+			sw.stop();
+			System.out.println(ans);
+			System.out.println(sw.getTime());
+		}
+		
+	}
 
 }
