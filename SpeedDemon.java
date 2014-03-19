@@ -3,10 +3,45 @@ package dbscan;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Arrays;
 
+/**
+ * 
+ * @author Diga W
+ *
+ */
 public class SpeedDemon {
 
+	/**
+	 * 
+	 * @author Diga W
+	 *
+	 */
+	class CustomPair {
+		
+		Integer[] charList;
+		int total;
+		
+		public CustomPair(Integer[] charlist, int value) {
+			charList = charlist;
+			total = value;
+		}
+		
+		public Integer[] getCharList() {
+			return charList;
+		}
+		
+		public int getTotal() {
+			return total;
+		}
+		
+		public void incrementTotal() {
+			total++;
+		}
+		
+	}
+	
 	BufferedReader reader;
 	HashMap<Integer, CustomPair> hashMap = new HashMap<Integer, CustomPair>();
 	
