@@ -152,7 +152,8 @@ public class WidyapranaPS5 {
 
 			// this branch is reached if either the hashcode is not in the
 			// hashmap yet, or the hashcode is in the hashmap but actually of
-			// different value (collision)
+			// different value (collision), so a new key is added to the hashmap
+			// via linear probing method
 			if (hashMap.get(noobHash) == null) {
 				hashMap.put(noobHash, new CustomPair(chars, 1));
 			}
@@ -173,12 +174,14 @@ public class WidyapranaPS5 {
 	 * @return
 	 */
 	static int asciiCalc(String s) {
-		
+
 		int val = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) % 2 == 0) {
+				// if ascii value is even, mutiply by 1003
 				val += s.charAt(i) * 1003;
 			} else {
+				// if ascii value is odd, multiply by 803
 				val += s.charAt(i) * 803;
 			}
 
@@ -186,6 +189,7 @@ public class WidyapranaPS5 {
 		return val;
 	}
 
+	/*
 	public static void main(String[] args) throws IOException {
 
 		args = new String[] { "4.in", "5.in", "6.in", "7.in", "8.in" };
@@ -200,5 +204,6 @@ public class WidyapranaPS5 {
 		}
 
 	}
+	*/
 
 }
