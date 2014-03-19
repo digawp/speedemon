@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @author Diga W
  * 
  */
-public class SpeedDemon {
+public class WidyapranaPS5 {
 
 	/**
 	 * A pair of Integer[] to store the array of 128 integers representing an
@@ -82,7 +82,7 @@ public class SpeedDemon {
 	 * @param path
 	 * @throws IOException
 	 */
-	public SpeedDemon(String path) throws IOException {
+	public WidyapranaPS5(String path) throws IOException {
 		reader = new BufferedReader(new FileReader(path));
 	}
 
@@ -190,7 +190,7 @@ public class SpeedDemon {
 
 		args = new String[] { "4.in", "5.in", "6.in", "7.in", "8.in" };
 		for (int i = 0; i < args.length; i++) {
-			SpeedDemon demon = new SpeedDemon(args[i]);
+			WidyapranaPS5 demon = new WidyapranaPS5(args[i]);
 			StopWatch sw = new StopWatch();
 			sw.start();
 			int ans = demon.run();
