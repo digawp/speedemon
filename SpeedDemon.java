@@ -14,13 +14,13 @@ public class SpeedDemon {
 		reader = new BufferedReader(new FileReader(path));
 	}
 	public int run() throws IOException {
-		int noOfLines = Integer.parseInt(reader.readLine());
+		
 		int answer = 0;
 		
 		while (reader.ready()) {
 			String line = reader.readLine();
 			
-			int noobHash = asciiCalc(line, noOfLines);
+			int noobHash = asciiCalc(line);
 			
 			Integer[] chars = new Integer[128];
 			
@@ -63,15 +63,7 @@ public class SpeedDemon {
 		return answer;
 	}
 	
-	static int countPair(int n) {
-		if (n % 2 == 0) {
-			return n/2 * (n-1);
-		} else {
-			return (n/2) * n;
-		}
-	}
-	
-	static int asciiCalc(String s, int max) {
+	static int asciiCalc(String s) {
 		int len = s.length();
 		int val = 0;
 		for (int i = 0; i < len; i++) {
