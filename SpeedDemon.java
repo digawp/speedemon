@@ -112,24 +112,47 @@ public class SpeedDemon {
 
 			// Converts the string into the array of integer
 			for (int i = 0; i < line.length(); i++) {
+
+				// converts char to int
 				int k = line.charAt(i);
+
+				// Because of the usage of wrapper class Integer instead of int,
+				// the default value is null instead of 0
 				if (chars[k - 1] == null) {
+					// If char with ascii value k is found the first time,
+					// change the value of the respective slot in the array to 1
+					// k-1 instead of kth slot is used because of the max index
+					// being 127 instead of 128 in an array of size 128
 					chars[k - 1] = 1;
 				} else {
+					// if a char with ascii value k is found again, just
+					// increment the initial value
 					chars[k - 1]++;
 				}
 
 			}
 
+			// Checks if the 'hashcode' is already in the hashmap
 			while (hashMap.get(noobHash) != null) {
+
+				// if the array of int in the hashmap with noobhash hashcode is
+				// the same as the array of int being checked, increment the
+				// count on that element
 				if (Arrays.deepEquals(hashMap.get(noobHash).getCharList(),
 						chars)) {
 					answer += hashMap.get(noobHash).getTotal();
 					hashMap.get(noobHash).incrementTotal();
 					break;
 				}
+
+				// Linear probing is used
 				noobHash++;
+
 			}
+
+			// this branch is reached if either the hashcode is not in the
+			// hashmap yet, or the hashcode is in the hashmap but actually of
+			// different value (collision)
 			if (hashMap.get(noobHash) == null) {
 				hashMap.put(noobHash, new CustomPair(chars, 1));
 			}
@@ -140,10 +163,19 @@ public class SpeedDemon {
 		return answer;
 	}
 
+	/**
+	 * Calculates the 'hashcode' of a string provided as the argument. The
+	 * hashcode is calculated by multiplying the ascii value of the character by
+	 * 1003 if it is even, or by 803 if it is odd (just some prime magic
+	 * numbers, no specific reason of using these numbers whatsoever)
+	 * 
+	 * @param s
+	 * @return
+	 */
 	static int asciiCalc(String s) {
-		int len = s.length();
+		
 		int val = 0;
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) % 2 == 0) {
 				val += s.charAt(i) * 1003;
 			} else {
@@ -153,10 +185,10 @@ public class SpeedDemon {
 		}
 		return val;
 	}
-	
+
 	public static void main(String[] args) throws IOException {
 
-		args = new String[]{"4.in", "5.in", "6.in", "7.in", "8.in"};
+		args = new String[] { "4.in", "5.in", "6.in", "7.in", "8.in" };
 		for (int i = 0; i < args.length; i++) {
 			SpeedDemon demon = new SpeedDemon(args[i]);
 			StopWatch sw = new StopWatch();
@@ -166,7 +198,7 @@ public class SpeedDemon {
 			System.out.println(ans);
 			System.out.println(sw.getTime());
 		}
-		
+
 	}
 
 }
