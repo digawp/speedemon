@@ -189,17 +189,16 @@ public class WidyapranaPS5 {
 		return val;
 	}
 
-	/*
+	
 	public static void main(String[] args) throws IOException {
 
-		args = new String[] { "4.in", "5.in", "6.in", "7.in", "8.in" };
 		for (int i = 0; i < args.length; i++) {
 			WidyapranaPS5 demon = new WidyapranaPS5(args[i]);
 			int ans = demon.run();
-			System.out.println(ans);
+			System.out.println("Number of pairs: " + ans);
 		}
 
 	}
-	*/
+	
 
 }
